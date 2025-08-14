@@ -50,6 +50,8 @@ export interface ToolInvocation<
   execute(
     signal: AbortSignal,
     updateOutput?: (output: string) => void,
+    terminalColumns?: number,
+    terminalRows?: number,
   ): Promise<TResult>;
 }
 
@@ -78,6 +80,8 @@ export abstract class BaseToolInvocation<
   abstract execute(
     signal: AbortSignal,
     updateOutput?: (output: string) => void,
+    terminalColumns?: number,
+    terminalRows?: number,
   ): Promise<TResult>;
 }
 
@@ -117,8 +121,16 @@ export class LegacyToolInvocation<
   execute(
     signal: AbortSignal,
     updateOutput?: (output: string) => void,
+    terminalColumns?: number,
+    terminalRows?: number,
   ): Promise<TResult> {
-    return this.legacyTool.execute(this.params, signal, updateOutput);
+    return this.legacyTool.execute(
+      this.params,
+      signal,
+      updateOutput,
+      terminalColumns,
+      terminalRows,
+    );
   }
 }
 
@@ -232,9 +244,16 @@ export abstract class DeclarativeTool<
     params: TParams,
     signal: AbortSignal,
     updateOutput?: (output: string) => void,
+    terminalColumns?: number,
+    terminalRows?: number,
   ): Promise<TResult> {
     const invocation = this.build(params);
-    return invocation.execute(signal, updateOutput);
+    return invocation.execute(
+      signal,
+      updateOutput,
+      terminalColumns,
+      terminalRows,
+    );
   }
 }
 
@@ -284,13 +303,13 @@ export abstract class BaseTool<
    * @param parameterSchema JSON Schema defining the parameters
    */
   constructor(
-    readonly name: string,
-    readonly displayName: string,
-    readonly description: string,
-    readonly kind: Kind,
-    readonly parameterSchema: unknown,
-    readonly isOutputMarkdown: boolean = true,
-    readonly canUpdateOutput: boolean = false,
+    override readonly name: string,
+    override readonly displayName: string,
+    override readonly description: string,
+    override readonly kind: Kind,
+    override readonly parameterSchema: unknown,
+    override readonly isOutputMarkdown: boolean = true,
+    override readonly canUpdateOutput: boolean = false,
   ) {
     super(
       name,
@@ -320,7 +339,7 @@ export abstract class BaseTool<
    * @returns An error message string if invalid, null otherwise
    */
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  validateToolParams(params: TParams): string | null {
+  override validateToolParams(params: TParams): string | null {
     // Implementation would typically use a JSON Schema validator
     // This is a placeholder that should be implemented by derived classes
     return null;
@@ -373,6 +392,8 @@ export abstract class BaseTool<
     params: TParams,
     signal: AbortSignal,
     updateOutput?: (output: string) => void,
+    terminalColumns?: number,
+    terminalRows?: number,
   ): Promise<TResult>;
 }
 
