@@ -99,15 +99,15 @@ export const Footer: React.FC<FooterProps> = ({
         paddingX={isNarrow ? 0 : 1}
         paddingTop={isNarrow ? 1 : 0}
       >
-        {process.env.SANDBOX && process.env.SANDBOX !== 'sandbox-exec' ? (
+        {process.env['SANDBOX'] && process.env['SANDBOX'] !== 'sandbox-exec' ? (
           <Text color="green">
-            {process.env.SANDBOX.replace(/^gemini-(?:cli-)?/, '')}
+            {process.env['SANDBOX'].replace(/^gemini-(?:cli-)?/, '')}
           </Text>
-        ) : process.env.SANDBOX === 'sandbox-exec' ? (
+        ) : process.env['SANDBOX'] === 'sandbox-exec' ? (
           <Text color={theme.status.warning}>
             macOS Seatbelt{' '}
             <Text color={theme.text.secondary}>
-              ({process.env.SEATBELT_PROFILE})
+              ({process.env['SEATBELT_PROFILE']})
             </Text>
           </Text>
         ) : (
