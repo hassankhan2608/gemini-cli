@@ -87,7 +87,7 @@ export class ShellProcessor implements IPromptProcessor {
     // Execute all commands (only runs if no confirmation was needed).
     let processedPrompt = prompt;
     for (const { fullMatch, command } of commandsToExecute) {
-      const { result } = ShellExecutionService.execute(
+      const { result } = await ShellExecutionService.execute(
         command,
         config!.getTargetDir(),
         () => {}, // No streaming needed.
