@@ -405,10 +405,6 @@ export class ClearcutLogger {
         value: JSON.stringify(event.function_name),
       },
       {
-        gemini_cli_key: EventMetadataKey.GEMINI_CLI_PROMPT_ID,
-        value: JSON.stringify(event.prompt_id),
-      },
-      {
         gemini_cli_key: EventMetadataKey.GEMINI_CLI_TOOL_CALL_DECISION,
         value: JSON.stringify(event.decision),
       },
@@ -458,10 +454,6 @@ export class ClearcutLogger {
       {
         gemini_cli_key: EventMetadataKey.GEMINI_CLI_API_REQUEST_MODEL,
         value: JSON.stringify(event.model),
-      },
-      {
-        gemini_cli_key: EventMetadataKey.GEMINI_CLI_PROMPT_ID,
-        value: JSON.stringify(event.prompt_id),
       },
     ];
 
@@ -523,10 +515,6 @@ export class ClearcutLogger {
       {
         gemini_cli_key: EventMetadataKey.GEMINI_CLI_API_ERROR_MODEL,
         value: JSON.stringify(event.model),
-      },
-      {
-        gemini_cli_key: EventMetadataKey.GEMINI_CLI_PROMPT_ID,
-        value: JSON.stringify(event.prompt_id),
       },
       {
         gemini_cli_key: EventMetadataKey.GEMINI_CLI_API_ERROR_TYPE,
