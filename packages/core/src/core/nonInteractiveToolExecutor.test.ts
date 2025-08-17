@@ -19,6 +19,10 @@ const mockConfig = {
   getSessionId: () => 'test-session-id',
   getUsageStatisticsEnabled: () => true,
   getDebugMode: () => false,
+  getContentGeneratorConfig: () => ({
+    model: 'test-model',
+    authType: 'oauth-personal',
+  }),
 } as unknown as Config;
 
 describe('executeToolCall', () => {
