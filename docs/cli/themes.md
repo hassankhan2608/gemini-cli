@@ -143,6 +143,10 @@ You can define multiple custom themes by adding more entries to the `customTheme
 
 <img src="../assets/theme-github.png" alt="GitHub theme" width="600">
 
+### Tokyo Night
+
+<img src="../assets/theme-tokyo-night.png" alt="Tokyo Night theme" width="600">
+
 ## Light Themes
 
 ### ANSI Light
