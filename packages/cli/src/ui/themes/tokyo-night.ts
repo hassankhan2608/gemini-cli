@@ -11,7 +11,7 @@ const tokyonightColors: ColorsTheme = {
   type: 'dark',
   Background: '#1a1b26',
   Foreground: '#a9b1d6',
-  LightBlue: '#7dcfff',
+  LightBlue: '#89ddff',
   AccentBlue: '#7aa2f7',
   AccentPurple: '#bb9af7',
   AccentCyan: '#7dcfff',
