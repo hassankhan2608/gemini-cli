@@ -62,10 +62,10 @@ export const TokyoNight: Theme = new Theme(
       color: tokyonightColors.AccentYellow,
     },
     'hljs-variable': {
-      color: tokyonightColors.AccentRed,
+      color: tokyonightColors.Foreground,
     },
     'hljs-template-variable': {
-      color: tokyonightColors.AccentRed,
+      color: tokyonightColors.Foreground,
     },
     'hljs-tag .hljs-attr': {
       color: tokyonightColors.AccentCyan,
